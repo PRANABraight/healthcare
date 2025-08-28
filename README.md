@@ -38,7 +38,7 @@ Healthcare professionals are often faced with vast amounts of patient data from 
 
 | Dashboard Overview | Risk Assessment | Drug Interaction Checker |
 | :---: | :---: | :---: |
-| ![Dashboard](<INSERT_PATH_TO_DASHBOARD_IMAGE.png>) | ![Risk Assessment](<INSERT_PATH_TO_RISK_ASSESSMENT_IMAGE.png>) | ![Drug Interactions](<INSERT_PATH_TO_DRUG_INTERACTION_IMAGE.png>) |
+| ![Dashboard](<dashboard.png>) | ![Risk Assessment](<risk.png>) | ![Drug Interactions](<interaction.png>) |
 
 *(Note: Replace the placeholder paths with actual paths to your screenshots.)*
 
@@ -75,8 +75,8 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repository:**
     ```sh
-    git clone [https://github.com/your_username/your_project_repository.git](https://github.com/your_username/your_project_repository.git)
-    cd your_project_repository
+    git clone [https://github.com/PRANABraight/healthcare.git](https://github.com/PRANABraight/healthcare.git)
+    cd healthcare
     ```
 
 2.  **Create and activate a virtual environment (recommended):**
