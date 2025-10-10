@@ -38,7 +38,7 @@ Healthcare professionals are often faced with vast amounts of patient data from 
 
 | Dashboard Overview | Risk Assessment | Drug Interaction Checker |
 | :---: | :---: | :---: |
-| ![Dashboard](<dashboard.png>) | ![Risk Assessment](<risk.png>) | ![Drug Interactions](<interaction.png>) |
+| ![Dashboard](<data/dashboard.png>) | ![Risk Assessment](<data/risk.png>) | ![Drug Interactions](<data/interaction.png>) |
 
 *(Note: Replace the placeholder paths with actual paths to your screenshots.)*
 

@@ -30,7 +30,7 @@ st.set_page_config(
 def load_clinical_discovery_data():
     """Load clinical discovery cohort data"""
     try:
-        df = pd.read_csv('Clinical Data_Discovery_Cohort.csv')
+        df = pd.read_csv('data/Clinical Data_Discovery_Cohort.csv')
         return df
     except Exception as e:
         st.error(f"Error loading Clinical Discovery Data: {e}")
@@ -40,7 +40,7 @@ def load_clinical_discovery_data():
 def load_drug_interactions_data():
     """Load drug interactions database"""
     try:
-        df = pd.read_csv('db_drug_interactions.csv')
+        df = pd.read_csv('data/db_drug_interactions.csv')
         return df
     except Exception as e:
         st.error(f"Error loading Drug Interactions Data: {e}")
@@ -50,7 +50,7 @@ def load_drug_interactions_data():
 def load_drug_reviews_data():
     """Load drug reviews data"""
     try:
-        df = pd.read_csv('drugsComTest_raw.csv')
+        df = pd.read_csv('data/drugsComTest_raw.csv')
         return df
     except Exception as e:
         st.error(f"Error loading Drug Reviews Data: {e}")
@@ -60,7 +60,7 @@ def load_drug_reviews_data():
 def load_medical_transcriptions_data():
     """Load medical transcriptions data"""
     try:
-        df = pd.read_csv('mtsamples.csv')
+        df = pd.read_csv('data/mtsamples.csv')
         return df
     except Exception as e:
         st.error(f"Error loading Medical Transcriptions Data: {e}")
