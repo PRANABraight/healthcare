@@ -1,7 +1,12 @@
-# Configuration file for Clinical Decision Support System
+# config.py
+# Configuration file for Clinical Decision Support System (CDSS)
 
 import streamlit as st
+import os
 
+# -------------------------------------------------------
+# 🩺 Streamlit App Configuration
+# -------------------------------------------------------
 def configure_app():
     """Configure Streamlit app settings"""
     st.set_page_config(
@@ -15,24 +20,42 @@ def configure_app():
             'About': """
             # Clinical Decision Support System
             
-            This application provides comprehensive healthcare analytics and clinical decision support
-            through advanced data mining and NLP techniques.
+            This application provides comprehensive healthcare analytics and decision support
+            through data mining and NLP.
             
             **Features:**
-            - Medical text analysis and entity extraction
-            - Drug interaction checking with severity classification
-            - Patient risk stratification and recommendations
-            - Interactive healthcare analytics dashboard
-            - Research insights and statistical analysis
-            
-            **Developed for:** Healthcare professionals, researchers, and data scientists
+            - Medical text analysis & entity extraction
+            - Drug interaction severity classification
+            - Patient risk stratification & recommendations
+            - Interactive analytics dashboard
             
             **Version:** 1.0.0
             """
         }
     )
 
-# Dataset configuration
+
+# -------------------------------------------------------
+# 🧱 ETL Pipeline Configuration (For DataPipeline.py)
+# -------------------------------------------------------
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# config.py
+
+# ETL Data Pipeline Configuration
+DATA_PIPELINE_CONFIG = {
+    'clinical_data': {
+        'description': 'Processed clinical dataset for cancer survival analysis'
+    }
+}
+
+
+
+
+# -------------------------------------------------------
+# 📊 Dataset Metadata (for UI or documentation)
+# -------------------------------------------------------
 DATASET_CONFIG = {
     'clinical_discovery': {
         'filename': 'Clinical Data_Discovery_Cohort.csv',
@@ -49,11 +72,6 @@ DATASET_CONFIG = {
         'type': 'csv',
         'description': 'Comprehensive drug-drug interaction database'
     },
-    'drug_reviews_test': {
-        'filename': 'drugsComTest_raw.csv',
-        'type': 'csv',
-        'description': 'Patient drug reviews and ratings (test set)'
-    },
     'drug_reviews_train': {
         'filename': 'drugsComTrain_raw.csv',
         'type': 'csv',
@@ -62,20 +80,23 @@ DATASET_CONFIG = {
     'medical_transcriptions': {
         'filename': 'mtsamples.csv',
         'type': 'csv',
-        'description': 'Medical transcription samples across specialties'
+        'description': 'Medical transcription samples'
     }
 }
 
-# NLP Configuration
+
+# -------------------------------------------------------
+# 🧬 NLP Configuration
+# -------------------------------------------------------
 NLP_CONFIG = {
     'max_text_length': 10000,
     'min_text_length': 10,
     'medical_entity_patterns': {
-        'medications': r'\b(mg|mcg|ml|tablet|capsule|injection|dose|medication|drug|pill|aspirin|ibuprofen|acetaminophen|metformin|lisinopril|atorvastatin)\b',
-        'symptoms': r'\b(pain|fever|nausea|headache|fatigue|dizzy|anxiety|depression|insomnia|cough|shortness of breath|chest pain)\b',
-        'procedures': r'\b(surgery|operation|procedure|therapy|treatment|examination|test|biopsy|endoscopy|catheterization)\b',
-        'body_parts': r'\b(heart|lung|liver|kidney|brain|stomach|blood|chest|abdomen|spine|joint|muscle)\b',
-        'lab_values': r'\b(glucose|cholesterol|blood pressure|hemoglobin|creatinine|sodium|potassium|wbc|rbc)\b'
+        'medications': r'\b(mg|mcg|ml|tablet|capsule|injection|dose|drug|aspirin|ibuprofen|metformin|atorvastatin)\b',
+        'symptoms': r'\b(pain|fever|nausea|headache|fatigue|cough|shortness of breath)\b',
+        'procedures': r'\b(surgery|therapy|treatment|test|biopsy|endoscopy)\b',
+        'body_parts': r'\b(heart|lung|liver|kidney|brain|blood|chest|abdomen)\b',
+        'lab_values': r'\b(glucose|cholesterol|blood pressure|hemoglobin|creatinine)\b'
     },
     'phi_patterns': {
         'phone': r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b',
@@ -86,19 +107,16 @@ NLP_CONFIG = {
     }
 }
 
-# Risk Assessment Configuration
+
+# -------------------------------------------------------
+# ❤️ Risk Assessment Configuration
+# -------------------------------------------------------
 RISK_CONFIG = {
-    'age_thresholds': {
-        'high_risk': 65,
-        'moderate_risk': 50
-    },
-    'medication_thresholds': {
-        'polypharmacy': 5,
-        'multiple_meds': 3
-    },
+    'age_thresholds': {'high_risk': 65, 'moderate_risk': 50},
+    'medication_thresholds': {'polypharmacy': 5, 'multiple_meds': 3},
     'high_risk_conditions': [
         'diabetes', 'hypertension', 'heart disease', 'kidney disease',
-        'copd', 'cancer', 'stroke', 'heart failure', 'coronary artery disease'
+        'cancer', 'stroke', 'heart failure', 'coronary artery disease'
     ],
     'risk_levels': {
         'low': {'min': 0, 'max': 3, 'color': 'green'},
@@ -107,7 +125,10 @@ RISK_CONFIG = {
     }
 }
 
-# Visualization Configuration
+
+# -------------------------------------------------------
+# 📈 Visualization Configuration
+# -------------------------------------------------------
 VIZ_CONFIG = {
     'color_schemes': {
         'primary': 'viridis',
@@ -126,33 +147,32 @@ VIZ_CONFIG = {
     }
 }
 
-# Clinical Decision Support Configuration
+
+# -------------------------------------------------------
+# 🧠 Clinical Decision Support Configuration
+# -------------------------------------------------------
 CDS_CONFIG = {
     'interaction_severity_keywords': {
         'high': ['contraindicated', 'avoid', 'dangerous', 'severe', 'major'],
-        'moderate': ['increase', 'enhance', 'potentiate', 'monitor', 'caution'],
-        'minor': ['minor', 'slight', 'minimal', 'observe']
+        'moderate': ['monitor', 'caution', 'potentiate', 'enhance'],
+        'minor': ['slight', 'minimal', 'observe']
     },
     'icd10_codes': {
-        'diabetes': 'E11.9 - Type 2 diabetes mellitus without complications',
+        'diabetes': 'E11.9 - Type 2 diabetes mellitus',
         'hypertension': 'I10 - Essential hypertension',
-        'depression': 'F32.9 - Major depressive disorder, single episode, unspecified',
-        'anxiety': 'F41.9 - Anxiety disorder, unspecified',
-        'pneumonia': 'J18.9 - Pneumonia, unspecified organism',
+        'depression': 'F32.9 - Major depressive disorder',
         'asthma': 'J45.9 - Asthma, unspecified',
-        'copd': 'J44.1 - Chronic obstructive pulmonary disease with acute exacerbation',
-        'heart failure': 'I50.9 - Heart failure, unspecified',
-        'atrial fibrillation': 'I48.91 - Unspecified atrial fibrillation',
-        'migraine': 'G43.909 - Migraine, unspecified, not intractable, without status migrainosus',
-        'chest pain': 'R06.02 - Shortness of breath',
-        'abdominal pain': 'R10.9 - Unspecified abdominal pain'
+        'copd': 'J44.1 - Chronic obstructive pulmonary disease'
     }
 }
 
-# Performance Configuration
+
+# -------------------------------------------------------
+# ⚙️ Performance Configuration
+# -------------------------------------------------------
 PERFORMANCE_CONFIG = {
-    'cache_ttl': 3600,  # 1 hour
-    'max_dataframe_size': 50000,  # Maximum rows to process
-    'chunk_size': 1000,  # For processing large datasets
+    'cache_ttl': 3600,
+    'max_dataframe_size': 50000,
+    'chunk_size': 1000,
     'max_concurrent_operations': 5
 }

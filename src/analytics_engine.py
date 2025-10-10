@@ -146,6 +146,7 @@ class AnalyticsEngine:
         patient_features.fillna(patient_features.mean(), inplace=True)
 
         try:
+            
             prediction = self.model.predict(patient_features)[0]
             probability = self.model.predict_proba(patient_features)[0][1] # Probability of class '1' (High Risk)
             

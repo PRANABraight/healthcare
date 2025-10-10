@@ -1,132 +1,113 @@
-# src/data_pipeline.py
-
-import pandas as pd
+import os
 import logging
-from typing import Dict, Any
+import pandas as pd
+from datetime import datetime
 
-# Configure a professional logging system
+# Configure logging
 logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    level=logging.INFO
 )
-logger = logging.getLogger(__name__)
+
 
 class DataPipeline:
-    """
-    An encapsulated, robust ETL pipeline for processing clinical data.
-    This upgraded version handles common data quality issues like messy
-    column names and incorrect data types.
-    """
+    def __init__(self, path, file_type, output_path):
+        self.config = {
+            'clinical_data': {
+                'path': path,
+                'type': file_type,
+                'output_path': output_path
+            }
+        }
 
-    def __init__(self, config: Dict[str, Any]):
-        self.config = config
-        logger.info("Data Pipeline initialized with provided configuration.")
 
-    def extract(self, file_key: str) -> pd.DataFrame:
-        """STAGE 1: Extracts data from a source defined in the config."""
-        filepath = self.config['data_sources'][file_key]['path']
-        logger.info(f"Starting extraction from source: {filepath}")
+    def extract(self, file_path, file_type):
+        """Extract data from CSV or Excel file"""
         try:
-            raw_df = pd.read_csv(filepath)
-            logger.info(f"Successfully extracted {len(raw_df)} rows from {filepath}")
-            return raw_df
-        except FileNotFoundError:
-            logger.error(f"Extraction failed: File not found at {filepath}")
-            raise
+            logging.info(f"Extracting data from {file_path}")
+            if file_type == 'csv':
+                df = pd.read_csv(file_path)
+            elif file_type == 'excel':
+                df = pd.read_excel(file_path)
+            else:
+                raise ValueError("Unsupported file type.")
+            return df
         except Exception as e:
-            logger.error(f"An unexpected error occurred during extraction from {filepath}: {e}")
-            raise
+            logging.error(f"Error in extraction: {e}")
+            return None
 
-    def validate(self, df: pd.DataFrame, file_key: str) -> bool:
-        """STAGE 2: Validates the data against a predefined clean schema."""
-        schema = self.config['data_sources'][file_key]['schema']
-        logger.info(f"Starting validation for '{file_key}' against CLEAN schema.")
-        
-        missing_columns = [col for col in schema.keys() if col not in df.columns]
-        if missing_columns:
-            logger.error(f"Validation failed: Missing required columns after standardization: {missing_columns}")
+    def transform(self, df):
+        """Perform data transformations"""
+        logging.info("Standardizing column names...")
+        df.columns = df.columns.str.strip().str.replace(" ", "_").str.lower()
+
+        logging.info("Handling missing values...")
+        df = df.fillna("Unknown")
+
+        logging.info("Converting data types where applicable...")
+        if "age" in df.columns:
+            df["age"] = pd.to_numeric(df["age"], errors="coerce").fillna(0).astype(int)
+
+        if "tumor_size_(cm)" in df.columns:
+            df["tumor_size_(cm)"] = pd.to_numeric(df["tumor_size_(cm)"], errors="coerce")
+
+        return df
+
+    def validate(self, df):
+        """Validate dataset schema"""
+        logging.info("Validating data against schema...")
+
+        required_columns = [
+            "patient_id",
+            "survival_time_(days)",
+            "event_(death:_1,_alive:_0)",
+            "tumor_size_(cm)",
+            "grade",
+            "stage_(tnm_8th_edition)",
+            "age",
+            "sex",
+            "cigarette",
+            "pack_per_year",
+            "type.adjuvant",
+            "batch",
+            "egfr",
+            "kras"
+        ]
+
+        df_columns = df.columns.tolist()
+        missing = [col for col in required_columns if col not in df_columns]
+
+        if missing:
+            logging.error(f"Missing columns: {missing}")
             return False
 
-        logger.info(f"Validation for '{file_key}' passed successfully.")
+        logging.info("✅ Validation passed successfully.")
         return True
 
-    def transform(self, df: pd.DataFrame, file_key: str) -> pd.DataFrame:
-        """STAGE 3: Cleans, coerces types, and enriches the validated data."""
-        logger.info(f"Starting transformation for '{file_key}'.")
-        transformed_df = df.copy()
-        schema = self.config['data_sources'][file_key]['schema']
-
-        # --- Type Coercion and Cleaning ---
-        # This is a critical step to ensure the data perfectly matches the schema.
-        for col, dtype in schema.items():
-            if col in transformed_df.columns:
-                try:
-                    # Convert to numeric, coercing errors to NaT/NaN
-                    transformed_df[col] = pd.to_numeric(transformed_df[col], errors='coerce')
-                    
-                    if 'int' in dtype:
-                        # For integer columns, we must handle missing values before converting.
-                        # A common strategy is to fill with the median.
-                        median_val = transformed_df[col].median()
-                        transformed_df[col] = transformed_df[col].fillna(median_val)
-                    
-                    # Finally, cast to the specific type defined in the schema
-                    transformed_df[col] = transformed_df[col].astype(dtype)
-
-                except Exception as e:
-                    logger.error(f"Failed to process column '{col}' with type '{dtype}': {e}")
-                    raise
-        
-        # --- Feature Enrichment ---
-        if file_key == 'clinical_data' and 'age' in transformed_df.columns:
-            bins = [0, 18, 40, 65, 100]
-            labels = ['Pediatric', 'Adult', 'Middle-Aged', 'Senior']
-            transformed_df['age_group'] = pd.cut(transformed_df['age'], bins=bins, labels=labels, right=False)
-            logger.info("Enriched data with 'age_group' feature.")
-        
-        logger.info(f"Transformation complete. Final shape: {transformed_df.shape}")
-        return transformed_df
-
-    def load(self, df: pd.DataFrame, file_key: str) -> None:
-        """💾 STAGE 4: Loads the transformed data to a destination."""
-        output_path = self.config['data_sources'][file_key]['output_path']
-        logger.info(f"Starting load process to destination: {output_path}")
+    def load(self, df, output_path):
+        """Save the cleaned and validated data"""
         try:
-            # Ensure the output directory exists
-            import os
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             df.to_csv(output_path, index=False)
-            logger.info(f"Successfully loaded clean data to {output_path}")
+            logging.info(f"Saved cleaned data to {output_path}")
         except Exception as e:
-            logger.error(f"Failed to load data to {output_path}: {e}")
-            raise
+            logging.error(f"Error saving data: {e}")
 
-    @staticmethod
-    def run_pipeline(config: Dict[str, Any], file_key: str) -> pd.DataFrame:
-        """⚙️ ORCHESTRATOR: Executes the full ETL pipeline for a given data source."""
-        logger.info(f"===== Starting ETL Pipeline for '{file_key}' =====")
-        
-        pipeline = DataPipeline(config)
-        
-        # Stage 1: Extract
-        raw_data = pipeline.extract(file_key)
-        
-        # NEW ROBUST STEP: Standardize column names immediately after extraction.
-        clean_columns_data = raw_data.copy()
-        clean_columns_data.columns = [col.strip().lower().replace(' ', '_').replace('(', '').replace(')', '') for col in clean_columns_data.columns]
-        logger.info("Standardized column names to snake_case.")
-        
-        # Stage 2: Validate using the clean, standardized column names
-        if pipeline.validate(clean_columns_data, file_key):
-            # Stage 3: Transform (now operates on data with clean columns)
-            transformed_data = pipeline.transform(clean_columns_data, file_key)
+    def run_pipeline(self):
+        """Run the full ETL process"""
+        for file_key, cfg in self.config.items():
+            logging.info(f"===== Starting ETL Pipeline for '{file_key}' =====")
+
+            df = self.extract(cfg['path'], cfg['type'])
+            if df is None:
+                logging.error(f"Extraction failed for {file_key}")
+                continue
+
+            df = self.transform(df)
+            if not self.validate(df):
+                logging.error(f"Validation failed for {file_key}")
+                raise ValueError(f"Data validation failed for {file_key}")
+
+            self.load(df, cfg['output_path'])
             
-            # Stage 4: Load
-            pipeline.load(transformed_data, file_key)
-            
-            logger.info(f"===== ETL Pipeline for '{file_key}' Completed Successfully =====")
-            return transformed_data
-        else:
-            logger.error(f"===== ETL Pipeline for '{file_key}' Failed Due to Validation Errors =====")
-            raise ValueError(f"Data validation failed for {file_key}. Halting pipeline.")
+            logging.info(f"===== Pipeline for '{file_key}' Completed Successfully =====\n")

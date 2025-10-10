@@ -91,9 +91,8 @@ class DashboardVisuals:
                                  mode='lines+markers', name='Resp. Rate',
                                  line=dict(color=self.theme['primary_color'], dash='dash')), row=3, col=1)
 
-        fig.update_layout(height=500, title_text="Patient Vitals Over Time", showlegend=False)
+        fig.update_layout(height=500, title_text="Patient Vitals Over Time", showlegend=True)
         return self._apply_theme(fig)
-
     def plot_demographics_distribution(self, cohort_df: pd.DataFrame) -> go.Figure:
         """
         Creates a bar chart showing the distribution of patients by age group.
