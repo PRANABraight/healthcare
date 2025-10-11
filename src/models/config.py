@@ -1,4 +1,4 @@
-# src/config.py
+# models/config.py
 
 # Using 'string' for object/str types is more modern and explicit.
 # This schema defines the FINAL, CLEAN structure of your data.

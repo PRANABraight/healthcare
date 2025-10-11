@@ -1,4 +1,4 @@
-# src/visualizations.py
+# models/visualizations.py
 
 import pandas as pd
 import plotly.graph_objects as go

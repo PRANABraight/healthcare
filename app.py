@@ -4,11 +4,11 @@ import streamlit as st
 import pandas as pd
 import logging
 
-# Import the professional modules from the 'src' directory
-from src.config import PIPELINE_CONFIG
-from src.data_pipeline import DataPipeline
-from src.analytics_engine import AnalyticsEngine
-from src.visualizations import DashboardVisuals
+# Import the professional modules from the 'models' directory
+from models.config import PIPELINE_CONFIG
+from models.data_pipeline import DataPipeline
+from models.analytics_engine import AnalyticsEngine
+from models.visualizations import DashboardVisuals
 
 # Configure the page for a professional look and feel
 st.set_page_config(
@@ -106,7 +106,7 @@ def main():
         )
     with col2:
         st.metric(
-            label="Predicted Risk (ML Model)",
+            label="Predicted Risk (ML models)",
             value=ml_risk_level,
             delta=f"Confidence: {ml_confidence:.0%}",
             delta_color="off"
