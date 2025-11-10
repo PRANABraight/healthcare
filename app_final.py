@@ -374,7 +374,7 @@ def main():
             "💊 Drug Interactions",
             "⚠️ Risk Assessment",
             "📊 Analytics",
-            "👥 Team"
+            # "👥 Team"
         ]
     )
     
@@ -405,8 +405,8 @@ def main():
         show_risk_assessment(clinical_discovery)
     elif page == "📊 Analytics":
         show_analytics(clinical_discovery, drug_reviews, medical_transcriptions)
-    elif page == "👥 Team":
-        show_team()
+    # elif page == "👥 Team":
+    #     show_team()
 
 def show_dashboard(clinical_discovery, drug_interactions, drug_reviews, medical_transcriptions):
     """Display main dashboard"""
@@ -995,135 +995,135 @@ def show_analytics(clinical_discovery, drug_reviews, medical_transcriptions):
                     non_null_cols = medical_transcriptions.count().sum()
                     st.metric("Data Completeness", f"{(non_null_cols/(len(medical_transcriptions)*len(medical_transcriptions.columns))*100):.1f}%")
 
-def show_team():
-    """Display team member allocation and responsibilities"""
-    st.header("👥 Team Member Allocation")
-    st.markdown("---")
+# def show_team():
+#     """Display team member allocation and responsibilities"""
+#     st.header("👥 Team Member Allocation")
+#     st.markdown("---")
     
-    # Team overview
-    st.subheader("🎯 Project Team Overview")
-    st.markdown("""
-    Our multidisciplinary team brings together expertise in data science, clinical analysis, 
-    software engineering, and healthcare visualization to deliver a comprehensive Clinical Decision Support System.
-    """)
+#     # Team overview
+#     st.subheader("🎯 Project Team Overview")
+#     st.markdown("""
+#     Our multidisciplinary team brings together expertise in data science, clinical analysis, 
+#     software engineering, and healthcare visualization to deliver a comprehensive Clinical Decision Support System.
+#     """)
     
-    # Team members
-    col1, col2 = st.columns(2)
+#     # Team members
+#     col1, col2 = st.columns(2)
     
-    with col1:
-        # Anusha
-        st.markdown("### 📊 **Anusha - Data Collection Specialist**")
-        st.markdown("**⏱️ Time Allocation: 4 hours**")
+#     with col1:
+#         # Anusha
+#         st.markdown("### 📊 **Anusha - Data Collection Specialist**")
+#         st.markdown("**⏱️ Time Allocation: 4 hours**")
         
-        with st.expander("🔍 **Key Responsibilities**", expanded=True):
-            st.markdown("""
-            • Research and identify suitable clinical datasets  
-            • Download MIMIC-IV sample and i2b2 datasets  
-            • Web scrape medical terminology from reliable sources  
-            • Generate synthetic clinical notes if needed  
-            • Create comprehensive dataset inventory
-            """)
+#         with st.expander("🔍 **Key Responsibilities**", expanded=True):
+#             st.markdown("""
+#             • Research and identify suitable clinical datasets  
+#             • Download MIMIC-IV sample and i2b2 datasets  
+#             • Web scrape medical terminology from reliable sources  
+#             • Generate synthetic clinical notes if needed  
+#             • Create comprehensive dataset inventory
+#             """)
         
-        with st.expander("📦 **Deliverables**"):
-            st.markdown("""
-            • Clinical text dataset (5000+ records)  
-            • Medical terminology database  
-            • Drug interaction dataset  
-            • Data source documentation
-            """)
+#         with st.expander("📦 **Deliverables**"):
+#             st.markdown("""
+#             • Clinical text dataset (5000+ records)  
+#             • Medical terminology database  
+#             • Drug interaction dataset  
+#             • Data source documentation
+#             """)
         
-        st.markdown("---")
+#         st.markdown("---")
         
-        # Pranab
-        st.markdown("### 🔧 **Pranab - Data Preparation Engineer**")
-        st.markdown("**⏱️ Time Allocation: 3 hours**")
+#         # Pranab
+#         st.markdown("### 🔧 **Pranab - Data Preparation Engineer**")
+#         st.markdown("**⏱️ Time Allocation: 3 hours**")
         
-        with st.expander("🔍 **Key Responsibilities**", expanded=True):
-            st.markdown("""
-            • Clean and standardize clinical text data  
-            • Handle missing values and data quality issues  
-            • Normalize medical terminology and abbreviations  
-            • Remove PHI and ensure data privacy  
-            • Create structured data from unstructured text
-            """)
+#         with st.expander("🔍 **Key Responsibilities**", expanded=True):
+#             st.markdown("""
+#             • Clean and standardize clinical text data  
+#             • Handle missing values and data quality issues  
+#             • Normalize medical terminology and abbreviations  
+#             • Remove PHI and ensure data privacy  
+#             • Create structured data from unstructured text
+#             """)
         
-        with st.expander("📦 **Deliverables**"):
-            st.markdown("""
-            • Clean, preprocessed clinical dataset  
-            • Data quality assessment report  
-            • Medical abbreviation mapping dictionary  
-            • Data preprocessing pipeline code
-            """)
+#         with st.expander("📦 **Deliverables**"):
+#             st.markdown("""
+#             • Clean, preprocessed clinical dataset  
+#             • Data quality assessment report  
+#             • Medical abbreviation mapping dictionary  
+#             • Data preprocessing pipeline code
+#             """)
     
-    with col2:
-        # Sujay
-        st.markdown("### 🏥 **Sujay - Clinical Data Analyst**")
-        st.markdown("**⏱️ Time Allocation: 4 hours**")
+#     with col2:
+#         # Sujay
+#         st.markdown("### 🏥 **Sujay - Clinical Data Analyst**")
+#         st.markdown("**⏱️ Time Allocation: 4 hours**")
         
-        with st.expander("🔍 **Key Responsibilities**", expanded=True):
-            st.markdown("""
-            • Perform NLP analysis on clinical text  
-            • Extract medical entities and relationships  
-            • Conduct statistical analysis of clinical patterns  
-            • Identify drug interactions and risk factors  
-            • Analyze treatment outcomes and effectiveness
-            """)
+#         with st.expander("🔍 **Key Responsibilities**", expanded=True):
+#             st.markdown("""
+#             • Perform NLP analysis on clinical text  
+#             • Extract medical entities and relationships  
+#             • Conduct statistical analysis of clinical patterns  
+#             • Identify drug interactions and risk factors  
+#             • Analyze treatment outcomes and effectiveness
+#             """)
         
-        with st.expander("📦 **Deliverables**"):
-            st.markdown("""
-            • Medical entity extraction results  
-            • Statistical analysis of clinical patterns  
-            • Drug interaction detection system  
-            • Treatment effectiveness analysis report
-            """)
+#         with st.expander("📦 **Deliverables**"):
+#             st.markdown("""
+#             • Medical entity extraction results  
+#             • Statistical analysis of clinical patterns  
+#             • Drug interaction detection system  
+#             • Treatment effectiveness analysis report
+#             """)
         
-        st.markdown("---")
+#         st.markdown("---")
         
-        # Rakshit
-        st.markdown("### 📊 **Rakshit - Visualization & Insights Lead**")
-        st.markdown("**⏱️ Time Allocation: 5 hours**")
+#         # Rakshit
+#         st.markdown("### 📊 **Rakshit - Visualization & Insights Lead**")
+#         st.markdown("**⏱️ Time Allocation: 5 hours**")
         
-        with st.expander("🔍 **Key Responsibilities**", expanded=True):
-            st.markdown("""
-            • Create interactive clinical data visualizations  
-            • Develop Streamlit dashboard for results  
-            • Generate clinical insights and recommendations  
-            • Prepare final presentation and documentation  
-            • Conduct project reflection and future planning
-            """)
+#         with st.expander("🔍 **Key Responsibilities**", expanded=True):
+#             st.markdown("""
+#             • Create interactive clinical data visualizations  
+#             • Develop Streamlit dashboard for results  
+#             • Generate clinical insights and recommendations  
+#             • Prepare final presentation and documentation  
+#             • Conduct project reflection and future planning
+#             """)
         
-        with st.expander("📦 **Deliverables**"):
-            st.markdown("""
-            • Interactive clinical dashboard  
-            • Comprehensive visualization suite  
-            • Clinical recommendations report  
-            • Final project presentation  
-            • Project reflection document
-            """)
+#         with st.expander("📦 **Deliverables**"):
+#             st.markdown("""
+#             • Interactive clinical dashboard  
+#             • Comprehensive visualization suite  
+#             • Clinical recommendations report  
+#             • Final project presentation  
+#             • Project reflection document
+#             """)
     
-    # Project summary
-    st.markdown("---")
-    st.subheader("📈 **Project Timeline & Coordination**")
+    # # Project summary
+    # st.markdown("---")
+    # st.subheader("📈 **Project Timeline & Coordination**")
     
-    col1, col2, col3, col4 = st.columns(4)
+    # col1, col2, col3, col4 = st.columns(4)
     
-    with col1:
-        st.metric("Total Team Hours", "16 hours")
-    with col2:
-        st.metric("Team Members", "4 people")
-    with col3:
-        st.metric("Project Phases", "4 phases")
-    with col4:
-        st.metric("Deliverables", "15 items")
+    # with col1:
+    #     st.metric("Total Team Hours", "16 hours")
+    # with col2:
+    #     st.metric("Team Members", "4 people")
+    # with col3:
+    #     st.metric("Project Phases", "4 phases")
+    # with col4:
+    #     st.metric("Deliverables", "15 items")
     
-    # Team collaboration
-    st.markdown("### 🤝 **Team Collaboration Strategy**")
-    st.markdown("""
-    **Phase 1:** Data Collection & Preparation ( Anusha → Pranab)  
-    **Phase 2:** Clinical Analysis  (Sujay)  
-    **Phase 3:** Visualization & Dashboard Development (Rakshit)  
-    **Phase 4:** Integration, Testing & Documentation (All team members)
-    """)
+    # # Team collaboration
+    # st.markdown("### 🤝 **Team Collaboration Strategy**")
+    # st.markdown("""
+    # **Phase 1:** Data Collection & Preparation ( Anusha → Pranab)  
+    # **Phase 2:** Clinical Analysis  (Sujay)  
+    # **Phase 3:** Visualization & Dashboard Development (Rakshit)  
+    # **Phase 4:** Integration, Testing & Documentation (All team members)
+    # """)
     
     # Success metrics
     st.markdown("### 🎯 **Success Metrics**")
