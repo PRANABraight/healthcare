@@ -18,7 +18,7 @@ Repository layout
 - `src/controllers/` — controller code
 - `src/models/` — data pipeline, analytics engine, visualizations, and a saved model (`final_patient_outcome_model.pkl`)
 - `data/` — raw and processed CSVs and small images used by the app
-<!-- - `tests/` — unit tests -->
+
 
 Important data files
 --------------------
@@ -58,18 +58,8 @@ Notes & assumptions
 - `main.py` currently contains absolute Windows paths. Change these to relative paths or environment-based configs for portability.
 - Keep PHI out of the repository and test data.
 
-Running tests
--------------
-Run the test suite with pytest:
-
-```bash
-pytest -q
-```
 
 License
 -------
 MIT
 
-Contact
--------
-See repository contributors in the git history.
