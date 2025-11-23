@@ -64,7 +64,7 @@ The Clinical Decision Support System (CDSS) is a comprehensive data science proj
 ```
 healthcare/
 ├── app_final.py              # Main Streamlit application
-├── main.py                   # Application entry point
+├── main.py                   # ETL & Analytics entry point
 ├── config.py                 # Configuration settings
 ├── requirements.txt          # Python dependencies
 │
@@ -89,7 +89,7 @@ healthcare/
 │   ├── 01_exploratory_data_analysis.ipynb
 │   ├── 02_feature_engineering.ipynb
 │   ├── 03_model_development.ipynb
-│   ├── 04_model_interpretation.ipynb
+│   ├── 04_model_interpretability.ipynb
 │   └── 05_cohort_analysis.ipynb
 │
 ├── tests/                   # Unit and integration tests
@@ -146,6 +146,11 @@ streamlit run app_final.py
 
 The application will open in your browser at `http://localhost:8501`
 
+**Run ETL and Analytics Pipeline:**
+```bash
+python main.py
+```
+
 ---
 
 ## 📖 Usage Guide
@@ -186,12 +191,12 @@ The application will open in your browser at `http://localhost:8501`
 ### Data Sources
 This project integrates **5+ healthcare datasets**:
 
-1. **Clinical Discovery Cohort** - Patient outcomes and survival data
-2. **Clinical Validation Cohort** - Model validation dataset
-3. **Drug Interactions Database** - 22M+ drug-drug interactions
-4. **Drug Reviews** - 110K+ patient reviews and ratings
-5. **Medical Transcriptions** - Clinical notes and documentation
-6. **Stroke Dataset** - Risk factor analysis
+1. **Stroke Dataset** - Primary dataset for risk factor analysis
+2. **Clinical Discovery Cohort** - Patient outcomes and survival data
+3. **Clinical Validation Cohort** - Model validation dataset
+4. **Drug Interactions Database** - 22M+ drug-drug interactions
+5. **Drug Reviews** - 110K+ patient reviews and ratings
+6. **Medical Transcriptions** - Clinical notes and documentation
 
 ### Machine Learning Pipeline
 
