@@ -1,0 +1,8 @@
+{
+  "model_name": "Logistic Regression",
+  "test_auc_roc": 0.625,
+  "test_accuracy": 0.5,
+  "test_f1_score": 0.5714285714285714,
+  "n_features": 100,
+  "training_samples": 18
+}

@@ -1,0 +1,100 @@
+PatientID
+ Time
+ Specimen date_ 1/13/2005    
+ Specimen date_ 10/14/2003   
+ Specimen date_ 10/29/2004   
+ Specimen date_ 12/1/2003    
+ Specimen date_ 2/20/2006    
+ Specimen date_ 3/16/2004    
+ Specimen date_ 3/17/2003    
+ Specimen date_ 3/8/2004     
+ Specimen date_ 4/13/2006    
+ Specimen date_ 4/14/2006    
+ Specimen date_ 4/2/2004     
+ Specimen date_ 5/2/2005     
+ Specimen date_ 6/13/2006    
+ Specimen date_ 6/17/2003    
+ Specimen date_ 6/29/2004    
+ Specimen date_ 6/3/2004     
+ Specimen date_ 6/7/2005     
+ Specimen date_ 7/1/2004     
+ Specimen date_ 7/12/2006    
+ Specimen date_ 7/15/2004    
+ Specimen date_ 7/27/2004    
+ Specimen date_ 7/6/2006     
+ Specimen date_ 8/15/2006    
+ Specimen date_ 8/16/2005    
+ Specimen date_ 8/18/2005    
+ Specimen date_ 8/26/2004    
+ Specimen date_ 9/20/2004    
+ Specimen date_ 9/9/2003     
+ Dead or Alive_ Dead         
+ Date of Death_ 06/04/2009   
+ Date of Death_ 1/20/2015    
+ Date of Death_ 1/31/2004    
+ Date of Death_ 10/10/2004   
+ Date of Death_ 10/12/2011   
+ Date of Death_ 10/2/2006    
+ Date of Death_ 11/12/2004   
+ Date of Death_ 12/12/2011   
+ Date of Death_ 12/15/2005   
+ Date of Death_ 12/29/2006   
+ Date of Death_ 12/31/2006   
+ Date of Death_ 2/24/2010    
+ Date of Death_ 2/3/2008     
+ Date of Death_ 3/13/2015    
+ Date of Death_ 4/11/2006    
+ Date of Death_ 4/29/2007    
+ Date of Death_ 5/21/2006    
+ Date of Death_ 7/26/2006    
+ Date of Death_ 8/1/2009     
+ Date of Death_ 8/5/2004     
+ Date of Death_ 9/9/2010     
+ Date of Last Follow Up_ 1/20/2015             
+ Date of Last Follow Up_ 1/31/2004             
+ Date of Last Follow Up_ 10/10/2004            
+ Date of Last Follow Up_ 10/12/2011            
+ Date of Last Follow Up_ 10/16/2009            
+ Date of Last Follow Up_ 10/2/2006             
+ Date of Last Follow Up_ 11/12/2004            
+ Date of Last Follow Up_ 12/12/2011            
+ Date of Last Follow Up_ 12/15/2005            
+ Date of Last Follow Up_ 12/29/2006            
+ Date of Last Follow Up_ 12/31/2006            
+ Date of Last Follow Up_ 2/24/2010             
+ Date of Last Follow Up_ 2/3/2008              
+ Date of Last Follow Up_ 3/13/2015             
+ Date of Last Follow Up_ 4/11/2006             
+ Date of Last Follow Up_ 4/29/2007             
+ Date of Last Follow Up_ 4/29/2020             
+ Date of Last Follow Up_ 5/21/2006             
+ Date of Last Follow Up_ 5/9/2006              
+ Date of Last Follow Up_ 6/4/2009              
+ Date of Last Follow Up_ 6/5/2009              
+ Date of Last Follow Up_ 7/26/2006             
+ Date of Last Follow Up_ 7/29/2009             
+ Date of Last Follow Up_ 7/29/2020             
+ Date of Last Follow Up_ 8/1/2009              
+ Date of Last Follow Up_ 8/29/2017             
+ Date of Last Follow Up_ 8/4/2005              
+ Date of Last Follow Up_ 8/5/2004              
+ Date of Last Follow Up_ 9/9/2010              
+ sex_ M  
+ race_ B   
+ race_ O   
+ race_ W   
+ Stage  _ PT2PN0 
+ Stage  _ PT2PN1 
+ Stage  _ PT3PN0 
+ Stage  _ PT4PN1 
+ Stage  _ T1N0   
+ Stage  _ T1NOMX 
+ Stage  _ T2N0   
+ Stage  _ T2N1MX 
+ Stage  _ T2N2MX 
+ Stage  _ T2NOMX 
+ Stage  _ pT1pN0 
+ Stage  _ pT2N2MX
+ Stage  _ pT2NOMX
+ Stage  _ pT2pN0 
+ Stage  _ pT3N0Mx

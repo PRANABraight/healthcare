@@ -1,29 +1,3 @@
-
-# from src.data_pipeline import DataPipeline
-
-# # Correct assignments — NO trailing commas
-# path = r"C:/Users/prana/OneDrive/Desktop/4trimester/healthcare/data/Clinical_Data_Validation_Cohort.csv"
-# file_type = 'csv'
-# output_path = r"C:/Users/prana/OneDrive/Desktop/4trimester/healthcare/data/processed/Clinical_Data_Clean.csv"
-
-# if __name__ == "__main__":
-#     pipeline = DataPipeline(path, file_type, output_path)
-#     pipeline.run_pipeline()
-
-
-
-# from src.models.analytics_engine import AnalyticsEngine
-
-# cleaned_data_path = r"C:/Users/prana/OneDrive/Desktop/4trimester/healthcare/data/processed/Clinical_Data_Clean.csv"
-
-# engine = AnalyticsEngine(cleaned_data_path)
-# engine.run_all_analytics(output_dir=r"C:/Users/prana/OneDrive/Desktop/4trimester/healthcare/data/analytics")
-
-#from config import DATA_PIPELINE_CONFIG
-
-
-# main.py
-
 from src.controllers.main_controller import MainController
 import os
 
