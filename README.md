@@ -90,12 +90,10 @@ healthcare/
 │   ├── 02_feature_engineering.ipynb
 │   ├── 03_model_development.ipynb
 │   ├── 04_model_interpretability.ipynb
-│   └── 05_cohort_analysis.ipynb
+│   └── stroke_prediction.ipynb
 │
-├── tests/                   # Unit and integration tests
 ├── docs/                    # Documentation
-├── api/                     # FastAPI endpoints
-└── reports/                 # Generated reports
+
 ```
 
 ---
@@ -112,7 +110,7 @@ healthcare/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/healthcare-cdss.git
+   git clone https://github.com/PRANABraight/healthcare-cdss.git
    cd healthcare-cdss
    ```
 
@@ -310,14 +308,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
-
----
 
 ## 🙏 Acknowledgments
 
@@ -329,9 +320,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📈 Project Stats
 
-![GitHub stars](https://img.shields.io/github/stars/yourusername/healthcare-cdss?style=social)
-![GitHub forks](https://img.shields.io/github/forks/yourusername/healthcare-cdss?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/yourusername/healthcare-cdss?style=social)
+![GitHub stars](https://img.shields.io/github/stars/PRANABraight/healthcare-cdss?style=social)
+![GitHub forks](https://img.shields.io/github/forks/PRANABraight/healthcare-cdss?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/PRANABraight/healthcare-cdss?style=social)
 
 ---
 
