@@ -49,12 +49,12 @@ The Clinical Decision Support System (CDSS) is a comprehensive data science proj
 - **Plotly** - Interactive visualizations
 - **Matplotlib & Seaborn** - Statistical plotting
 - **NLTK & spaCy** - Natural language processing
-- **SQL (SQLite/PostgreSQL)** - Database management and analytics
+
 
 ### Machine Learning
 - **Random Forest** - Ensemble learning for risk prediction
 - **XGBoost** - Gradient boosting for high-performance models
-- **SHAP** - Model interpretability and feature importance
+- **SHAP and LIME** - Model interpretability and feature importance
 - **Cross-validation** - Robust model evaluation
 
 ---
@@ -318,12 +318,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📈 Project Stats
-
-![GitHub stars](https://img.shields.io/github/stars/PRANABraight/healthcare-cdss?style=social)
-![GitHub forks](https://img.shields.io/github/forks/PRANABraight/healthcare-cdss?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/PRANABraight/healthcare-cdss?style=social)
-
----
 
 **⭐ If you found this project helpful, please consider giving it a star!**
